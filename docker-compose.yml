@@ -1,25 +1,6 @@
 services:
-  db:
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_DATABASE: media
-    volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - lab
-
-  web:
-    image: php:8.2-apache
-    volumes:
-      - ./app:/var/www/html
+  vulnshop:
+    build: .
     ports:
-      - "127.0.0.1:8080:80"   # écoute UNIQUEMENT en local
-    depends_on:
-      - db
-    networks:
-      - lab
-
-networks:
-  lab:
-    driver: bridge
+      - "127.0.0.1:5000:5000"   # bind sur localhost uniquement par securite
+    container_name: vulnshop
