@@ -1,0 +1,6 @@
+services:
+  vulnshop:
+    build: .
+    ports:
+      - "127.0.0.1:5000:5000"   # bind sur localhost uniquement par securite
+    container_name: vulnshop
